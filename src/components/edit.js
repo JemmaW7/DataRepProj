@@ -11,7 +11,7 @@ export default function EditPet() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/api/pets/${id}`)
+    axios.get('http://localhost:4000/api/pet/'+ id)
       .then((response) => {
         setName(response.data.name);
         setBreed(response.data.breed);
@@ -23,11 +23,11 @@ export default function EditPet() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const updatedPet = { id, name, breed, age, image };
-    axios.put(`http://localhost:4000/api/pets/${id}`, updatedPet)
+    const newPet = { id, name, breed, age, image };
+    axios.put('http://localhost:4000/api/pet/'+ id, newPet)
       .then((res) => {
         console.log("Success: " + res.data);
-        navigate('/pets'); // Redirect to the pet listing page
+        navigate('/read'); // Redirect to the pet listing page
       })
       .catch((error) => console.log(error));
   };
