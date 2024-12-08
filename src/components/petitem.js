@@ -12,7 +12,7 @@ function PetItem(props) {
   // Delete function to handle removing a pet
   const handleDelete = (e) => {
     e.preventDefault();
-    axios.delete(`http://localhost:4000/api/pets/${props.mypet._id}`) // delete pet by ID
+    axios.delete('http://localhost:4000/api/pet/'+ props.mypet._id) // delete pet by ID
       .then(() => {
         props.Reload(); // Refresh the pet list after deletion
       })
@@ -32,7 +32,7 @@ function PetItem(props) {
             <p>Age: {props.mypet.age}</p>
           </blockquote>
         </Card.Body>
-        <Link to={`/edit/${props.mypet._id}`} className="btn btn-primary">Edit</Link>
+        <Link to={"/edit/"+props.mypet._id} className="btn btn-primary">Edit</Link>
         <Button variant="danger" onClick={handleDelete}>Delete</Button>
       </Card>
     </div>

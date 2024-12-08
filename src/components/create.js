@@ -61,12 +61,10 @@ const CreatePet = () => {
                 </div>
                 <div className="form-group">
                     <label>Image: </label>
-                    <select 
-                        className="form-control"
-                        value={image}
-                        onChange={(e) => setImage(e.target.value)}>
-                        
-                    </select>
+                    <input type="text" 
+                        className="form-control" 
+                        value={image} 
+                        onChange={(e) => setImage(e.target.value)} /> 
                 </div>
                 <div>
                     <input type="submit" value="Add Pet" className="btn btn-primary" />

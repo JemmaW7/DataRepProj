@@ -58,30 +58,30 @@ app.post('/api/pets', async (req, res) => {
 // Route to fetch a list of all movies (GET request)
 app.get('/api/pets', async (req, res) => {
     const pets = await Pet.find({});  // Fetch all movies from the database
-    res.json(movies); 
+    res.json(pets); 
 });
 
 // Route to fetch a specific movie by its ID (GET request)
-app.get('/api/pets/:id', async (req, res) => {
+app.get('/api/pet/:id', async (req, res) => {
     const pet = await Pet.findById(req.params.id);  
     res.send(pet);  
 });
 
 // Route to get movie by its ID 
- app.get('/api/pets/:id', async (req, res) => {
+ app.get('/api/pet/:id', async (req, res) => {
    let pet = await Pet.findById({ _id: req.params.id });
-   res.send(movie);
+   res.send(pet);
 });
 
 // Route to get movie by its ID and update it
-app.put('/api/pets/:id', async (req, res) => {
+app.put('/api/pet/:id', async (req, res) => {
     let pet = await Pet.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.send(pet);
 });
 
 
 // Route to get movie by its ID and delete it
-app.delete('/api/pets/:id', async (req, res) => {
+app.delete('/api/pet/:id', async (req, res) => {
   
     console.log('Deleting pet adoption with ID:', req.params.id);
     const pet = await Pet.findByIdAndDelete(req.params.id);
