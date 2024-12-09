@@ -1,5 +1,5 @@
 const Footer = () => {
-    return <h3>My Footer in another component</h3>;
+    return <footer><h3>Fur friends for ever!</h3></footer>;
   };
   
   export default Footer;

@@ -1,10 +1,13 @@
 import Pets from "./pets";  // Import the Pets component to display the list of pets
 import { useEffect, useState } from "react";  // Import hooks from React
 import axios from "axios";  // Import Axios for making HTTP requests
+import Search from './search';
+
 
 const Read = () => {
 
   const [pets, setPets] = useState([]);  // Initialize `pets` as an empty array
+  const [searchTerm, setSearchTerm] = useState("");
 
   // useEffect hook to fetch the list of pets when the component mounts
   useEffect(() => {
@@ -30,6 +33,18 @@ const Read = () => {
         });
   };
 
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+  };
+
+  const filteredPets = searchTerm
+    ? pets.filter(
+        (pet) =>
+          pet.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          pet.breed.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : pets;
+
   // Call to reload function to ensure data is fetched initially
   useEffect(() => {
     Reload();
@@ -37,8 +52,9 @@ const Read = () => {
 
   return (
     <div>
-      <h3>Pet Adoption Listings</h3>
-      <Pets myPets={pets} ReloadData={Reload} />  {/* Pass pet data to the Pets component */}
+      <h3 class="petPage">Pet Adoption Listings</h3>
+      <Search onSearch={handleSearch} />
+      <Pets myPets={filteredPets} ReloadData={Reload} />  {/* Pass pet data to the Pets component */}
     </div>
   );
 }

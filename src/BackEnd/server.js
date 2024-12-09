@@ -89,6 +89,19 @@ app.delete('/api/pet/:id', async (req, res) => {
     
 });
 
+app.get('/api/pets/random', async (req, res) => {
+    try {
+        const allPets = await Pet.find(); // Fetch all pets from the database
+        const shuffled = allPets.sort(() => 0.5 - Math.random()); // Shuffle the array
+        const randomPets = shuffled.slice(0, 3); // Select the first 3 pets
+        res.json(randomPets); // Return the random pets
+    } catch (error) {
+        console.error('Error fetching random pets:', error);
+        res.status(500).send('Server Error');
+    }
+});
+
+
 
 
 app.post('/api/pets', (req, res) => {

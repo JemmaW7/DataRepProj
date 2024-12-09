@@ -32,7 +32,7 @@ const CreatePet = () => {
     };
 
     return (
-        <div>
+        <div class="formstuff">
             <h3>Add a New Pet for Adoption</h3>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">

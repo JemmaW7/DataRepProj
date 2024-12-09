@@ -33,7 +33,7 @@ export default function EditPet() {
   };
 
   return (
-    <div>
+    <div class="formstuff">
       <h3>Edit Pet Details</h3>
       <form onSubmit={handleSubmit}>
         <div className="form-group">

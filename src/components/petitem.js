@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import Button from 'react-bootstrap/Button';
+import { FaEdit, FaPaw, FaBirthdayCake } from 'react-icons/fa'; // Import specific icons
 
 function PetItem(props) {
   useEffect(() => {
@@ -27,13 +28,20 @@ function PetItem(props) {
         <Card.Header>{props.mypet.name}</Card.Header>
         <Card.Body>
           <blockquote className="blockquote mb-0">
-          <img src={props.mypet.image} alt={props.mypet.name} />
-            <p>Breed: {props.mypet.breed}</p>
-            <p>Age: {props.mypet.age}</p>
+          <Card.Img 
+            variant="top" 
+            src={props.mypet.image || "default-image.jpg"} 
+            alt={props.mypet.name} 
+            className="img-fluid"
+          />
+            <p><strong><FaPaw /> Breed:</strong> {props.mypet.breed} </p>
+            <p><strong><FaBirthdayCake /> Age:</strong> {props.mypet.age}</p>
           </blockquote>
         </Card.Body>
-        <Link to={"/edit/"+props.mypet._id} className="btn btn-primary">Edit</Link>
-        <Button variant="danger" onClick={handleDelete}>Delete</Button>
+        <div className="pet-card-buttons">
+        <Link to={"/edit/" + props.mypet._id} className="btn btn-edit"><FaEdit /> Change details</Link>
+      <Button className="btn btn-del" onClick={handleDelete}>Adopted</Button>
+    </div>
       </Card>
     </div>
   );
