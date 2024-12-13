@@ -1,5 +1,6 @@
 import React from "react";
 
+// handle input changes and pass the search term to the parent component
 const Search = ({ onSearch }) => {
   const handleInputChange = (e) => {
     onSearch(e.target.value); // Pass search term to the parent

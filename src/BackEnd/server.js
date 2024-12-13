@@ -1,38 +1,32 @@
-// Importing required modules
 const express = require('express');
-const app = express();  // Initialize an Express application
-const port = 4000;  // Define the port number for the server
+const app = express();  
+const port = 4000;  
 
-// Route to handle GET request for the root URL
-app.get('/', (req, res) => {
-    res.send('Hello World');  
-});
-
-// Enable CORS to allow cross-origin requests
+// enable cors to allow cross-origin requests
 const cors = require('cors');
-app.use(cors());  // CORS middleware to allow requests from other origins
+app.use(cors());  
 
-// Middleware to parse JSON data
+// middleware to parse json data
 app.use(express.json());  
 
-// Custom middleware to set CORS headers (could be redundant with `cors()` above)
+// custom middleware to set cors headers
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");  // Allow requests from any origin
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");  // Allow specific HTTP methods
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");  // Allow specific headers
+  res.header("access-control-allow-origin", "*");  
+  res.header("access-control-allow-methods", "get, post, put, delete, options"); 
+  res.header("access-control-allow-headers", "origin, x-requested-with, content-type, accept");
   next();  
 });
 
-// Middleware for parsing URL-encoded data and JSON
+// middleware for parsing url-encoded data and json
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));  // Middleware for parsing URL-encoded data
-app.use(bodyParser.json());  // Middleware for parsing JSON data
+app.use(bodyParser.urlencoded({ extended: true }));  
+app.use(bodyParser.json()); 
 
-// Connect to MongoDB database using Mongoose
+// connect to mongodb database using mongoose
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://jwUSER:jemma@datarlab.in1rd.mongodb.net/');  // MongoDB Atlas connection string
+mongoose.connect('mongodb+srv://jwUSER:jemma@datarlab.in1rd.mongodb.net/'); 
 
-// Define a Mongoose schema for Movie data
+// define a mongoose schema for pet data
 const petSchema = new mongoose.Schema({
     name: String,
     breed: String,
@@ -40,77 +34,60 @@ const petSchema = new mongoose.Schema({
     image: String
 });
  
-// Create a Mongoose model for the Movie schema
+// create a mongoose model for the pet schema
 const Pet = mongoose.model('Pet', petSchema);
 
-// Route to create a new movie (POST request)
-app.post('/api/pets', async (req, res) => {
-    console.log("Pet added: " + req.body.title);  // Log the title of the movie being added
-
-    const { name, breed, age, image } = req.body;  // Destructure the data from the request body
-   
-    const newPet = new Pet({ name, breed, age, image });  // Create a new movie object
-    await newPet.save();  // Save the new movie to the database
-   
-    res.status(201).json({ message: 'Pet adoption created successfully', pet: newPet });  // Send a success response with the new movie
+// route to handle get request for the root url
+app.get('/', (req, res) => {
+    res.send('hello world');  
 });
 
-// Route to fetch a list of all movies (GET request)
+// route to create a new pet 
+app.post('/api/pets', async (req, res) => {
+    const { name, breed, age, image } = req.body;  // destructure the data from the request body
+    const newPet = new Pet({ name, breed, age, image });  // create a new pet object
+    await newPet.save();  
+    res.status(201).json({ message: 'pet adoption created successfully', pet: newPet });
+});
+
+// route to fetch a list of all pets 
 app.get('/api/pets', async (req, res) => {
-    const pets = await Pet.find({});  // Fetch all movies from the database
+    const pets = await Pet.find({}); 
     res.json(pets); 
 });
 
-// Route to fetch a specific movie by its ID (GET request)
+// route to fetch a specific pet by its id
 app.get('/api/pet/:id', async (req, res) => {
-    const pet = await Pet.findById(req.params.id);  
+    const pet = await Pet.findById(req.params.id); 
     res.send(pet);  
 });
 
-// Route to get movie by its ID 
- app.get('/api/pet/:id', async (req, res) => {
-   let pet = await Pet.findById({ _id: req.params.id });
-   res.send(pet);
-});
-
-// Route to get movie by its ID and update it
+// route to update a pet by its id
 app.put('/api/pet/:id', async (req, res) => {
-    let pet = await Pet.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const pet = await Pet.findByIdAndUpdate(req.params.id, req.body, { new: true }); 
     res.send(pet);
 });
 
-
-// Route to get movie by its ID and delete it
+// route to delete a pet by its id 
 app.delete('/api/pet/:id', async (req, res) => {
-  
-    console.log('Deleting pet adoption with ID:', req.params.id);
-    const pet = await Pet.findByIdAndDelete(req.params.id);
-    res.status(200).send({ message: "Pet adoption deleted successfully", pet });
-    
+    const pet = await Pet.findByIdAndDelete(req.params.id); 
+    res.status(200).send({ message: "pet adoption deleted successfully", pet });
 });
 
+// route to fetch random pets
 app.get('/api/pets/random', async (req, res) => {
     try {
-        const allPets = await Pet.find(); // Fetch all pets from the database
-        const shuffled = allPets.sort(() => 0.5 - Math.random()); // Shuffle the array
-        const randomPets = shuffled.slice(0, 3); // Select the first 3 pets
-        res.json(randomPets); // Return the random pets
+        const allPets = await Pet.find();  
+        const shuffled = allPets.sort(() => 0.5 - Math.random());  // shuffle the pets array
+        const randomPets = shuffled.slice(0, 3);  // select 3 random pets
+        res.json(randomPets);  
     } catch (error) {
-        console.error('Error fetching random pets:', error);
-        res.status(500).send('Server Error');
+        console.error('error fetching random pets:', error);
+        res.status(500).send('server error');
     }
 });
 
-
-
-
-app.post('/api/pets', (req, res) => {
-    const pet = req.body;  // Get the movie data from the request body
-    res.status(201).json(pet);  
-});
-
-
-// Start the server and listen on the specified port
+// start the server and listen on the specified port
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);  // Log when the server is successfully running
+    console.log(`server is running on http://localhost:${port}`);  // log when the server is successfully running
 });

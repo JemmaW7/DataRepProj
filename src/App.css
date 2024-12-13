@@ -16,10 +16,10 @@
 }
 
 .navbar-brand {
-  font-size: 60px !important; /* Example: Increase font size */
-  color: rgb(0, 0, 0) !important;    /* Example: Change text color */
-  margin-left: 0;  /* Optional: Align to the left */
-  position: absolute; /* Position it absolutely to left */
+  font-size: 60px !important; 
+  color: rgb(0, 0, 0) !important;   
+  margin-left: 0;  
+  position: absolute; 
   left: 0;
   text-decoration: none !important;
   font-family: 'Poppins', sans-serif !important;
@@ -28,30 +28,30 @@
 
 .navbar .container {
   display: flex;
-  justify-content: center; /* Center the rest of the items */
-  align-items: center; /* Vertically align if necessary */
+  justify-content: center; 
+  align-items: center;
 }
 
 .navbar .navbar-nav {
   display: flex;
-  justify-content: center; /* Ensure nav links are centered */
+  justify-content: center; 
   flex-grow: 1;
 }
 
 .card-img-top {
   object-fit: cover;
-  height: 800px; /* Ensure a fixed height for the image */
+  height: 800px; 
   width: 900px;
 }
 
 .pet-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Creates a 2-column grid */
-  gap: 40px; /* Adds space between cards */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px; 
   padding: 20px;
-  margin: 20px;
-  width: 100%;  /* Ensures the grid container takes up the full width */
-  box-sizing: border-box;  /* Include padding in width calculation */
+  margin: auto;
+  width: 100%; 
+  box-sizing: border-box;  
 }
 
 .pet-grid .card {
@@ -63,8 +63,8 @@
 }
 
 .pet-grid .card:hover {
-  transform: scale(1.02); /* Slightly enlarges the card on hover */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Adds a shadow effect */
+  transform: scale(1.02); 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
 }
 
 .card-body {
@@ -86,7 +86,7 @@
 
 .pet-card-buttons {
   display: flex;
-  justify-content: space-between; /* Space out the buttons */
+  justify-content: space-between; 
   padding: 10px 15px;
 }
 
@@ -97,8 +97,8 @@
 }
 
 .btn-edit:hover {
-  background-color: #ff7cd8; /* Change the background color when hovering */
-  color: white; /* Optional: Change text color on hover */
+  background-color: #ff7cd8;
+  color: white; 
 }
 
 .btn-del{
@@ -108,47 +108,53 @@
 }
 
 .btn-del:hover {
-  background-color: #cf7cff; /* Change the background color when hovering */
-  color: white; /* Optional: Change text color on hover */
+  background-color: #cf7cff; 
+  color: white; 
 }
 
 .card p {
-  color: #000000; /* Neutral dark grey for good contrast */
-  font-size: 2rem; /* Standard font size */
-  line-height: 1.6; /* Improve readability */
-  margin: 5px 0; /* Add spacing between the lines */
-  text-align: left; /* Center-align for a balanced look */
+  color: #000000; 
+  font-size: 2rem; 
+  line-height: 1.6; 
+  margin: 5px 0; 
+  text-align: left; 
 }
 
-/* Style the labels (Breed: and Age:) if bolded with <strong> */
+
 .card p strong {
-  color: #492106; /* Highlight "Breed" and "Age" labels in coral red */
-  font-weight: 600; /* Bold weight for emphasis */
-  font-size: 2.1rem; /* Slightly larger for distinction */
+  color: #492106; 
+  font-weight: 600;
+  font-size: 2.1rem; 
 }
 
 html, body {
   overflow-x: hidden;
+  
 }
 
 .petPage{
+  min-height: 100%;
+  padding-bottom: 60px;
+}
+
+.petPageTitle{
   margin: 30px; 
-  font-size: 3rem !important; /* Standard font size */
+  font-size: 3rem !important; 
   font-family: 'Indie Flower', cursive;
 }
 
 .carousel{
-  height: 900px;
-  width: 900px !important;
-  font-size: 2rem !important; /* Standard font size */
+  height: 1300px;
+  width: 1300px !important;
+  font-size: 2rem !important; 
   font-family: 'Indie Flower', cursive;
   transform: translateY(-10%);
 }
 
 .carousel-item img {
   object-fit: cover;
-  height: 900px;
-  width: 900px !important;
+  height: 1300px;
+  width: 1300px !important;
 }
 
 .carousel-caption {
@@ -163,26 +169,27 @@ html, body {
 }
 
 .home h1{
-  font-size: 4rem !important; /* Standard font size */
+  font-size: 4rem !important; 
   font-family: 'Indie Flower', cursive;
 }
 
 .caro-con{
   display: flex;
-  justify-content: center;  /* Centers horizontally */
-  align-items: center;      /* Centers vertically */
+  justify-content: center; 
+  align-items: center;    
   height: 100vh; 
 }
 
 footer {
   background-color: #fdc200;  /* Yellow background color */
-  color: black;  /* Text color */
-  text-align: center;  /* Center the text */
-  padding: 20px;  /* Add some padding */
+  color: black;  
+  text-align: center;  
+  padding: 20px;  
   bottom: 0;
   width: 100%;
   font-size: 20px;
   font-weight: bold;
+  position: relative;
 }
 
 footer h3 {
@@ -191,12 +198,12 @@ footer h3 {
 
 form {
   max-width: 900px;
-  margin: 0 auto; /* Center the form horizontally */
-  background-color: #fff; /* White background for contrast */
-  padding: 20px; /* Add space inside the form */
-  border-radius: 10px; /* Rounded corners for a softer look */
-  border: 2px solid #fdc200; /* Border with theme color */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin: 0 auto; 
+  background-color: #fff; 
+  padding: 20px; 
+  border-radius: 10px; 
+  border: 2px solid #fdc200;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 
@@ -208,7 +215,7 @@ form {
   font-family: 'Poppins', sans-serif;
   font-size: 1.8rem;
   text-align: center;
-  color: #000000; /* Theme color */
+  color: #000000; 
   margin-bottom: 20px;
 }
 
@@ -221,45 +228,45 @@ form {
 form label {
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
-  color: #333; /* Neutral text color */
+  color: #333; 
   margin-bottom: 8px;
-  display: block; /* Ensure labels are above inputs */
+  display: block; 
 }
 
 /* Inputs */
 input[type="text"],
 input[type="number"],
 input[type="submit"] {
-  width: 100%; /* Full width inputs */
+  width: 100%; 
   padding: 10px;
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
-  border: 2px solid #fdc200; /* Theme color for input borders */
-  border-radius: 5px; /* Rounded corners */
-  box-sizing: border-box; /* Consistent sizing */
+  border: 2px solid #fdc200; 
+  border-radius: 5px; 
+  box-sizing: border-box; 
 }
 
 /* Input Focus State */
 input:focus {
-  border-color: #ffab00; /* Slightly darker shade of theme color */
+  border-color: #ffab00; 
   outline: none;
-  box-shadow: 0 0 5px rgba(253, 194, 0, 0.5); /* Add glow effect */
+  box-shadow: 0 0 5px rgba(253, 194, 0, 0.5); 
 }
 
 /* Submit Button */
 input[type="submit"] {
-  background-color: #fdc200; /* Theme color */
-  color: #fff; /* White text */
+  background-color: #fdc200; 
+  color: #fff;
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Smooth hover effect */
+  transition: background-color 0.3s ease; 
   border: none;
 }
 
 /* Submit Button Hover */
 input[type="submit"]:hover {
-  background-color: #ffab00; /* Slightly darker shade on hover */
+  background-color: #ffab00; 
 }
 
 
@@ -267,14 +274,25 @@ input[type="submit"]:hover {
   .pet-grid {
     transform: translateX(-5%);
     scale: 90%;
-    grid-template-columns: repeat(2, 1fr); /* Single-column layout for small screens */
+    grid-template-columns: repeat(2, 1fr); 
+  }
+
+  .carousel{
+    height: 900px;
+    width: 900px !important;
+  }
+  
+  .carousel-item img {
+    object-fit: cover;
+    height: 900px;
+    width: 900px !important;
   }
 }
 
 @media (max-width: 1700px) {
   .pet-grid {
     transform: translateX(13%);
-    grid-template-columns: 1fr; /* Single-column layout for small screens */
+    grid-template-columns: 1fr; 
   }
 }
 

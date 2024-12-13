@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+
+// editpet component allows editing details of an existing pet
 export default function EditPet() {
   const { id } = useParams(); // Get the pet's ID from the URL
   const [name, setName] = useState("");
@@ -10,6 +12,7 @@ export default function EditPet() {
   const [image, setImage] = useState('');
   const navigate = useNavigate();
 
+  // fetch pet details when the component loads
   useEffect(() => {
     axios.get('http://localhost:4000/api/pet/'+ id)
       .then((response) => {
@@ -21,6 +24,7 @@ export default function EditPet() {
       .catch((error) => console.log(error));
   }, [id]);
 
+  // handle form submission to update pet details
   const handleSubmit = (event) => {
     event.preventDefault();
     const newPet = { id, name, breed, age, image };
@@ -32,6 +36,7 @@ export default function EditPet() {
       .catch((error) => console.log(error));
   };
 
+  // form to edit pet details and pre-fill it with the current data of the pet identified by the id
   return (
     <div class="formstuff">
       <h3>Edit Pet Details</h3>

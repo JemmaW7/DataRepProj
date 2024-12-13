@@ -2,7 +2,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavigationBar from './components/NavigationBar';
-import Header from './components/header';
 import Footer from './components/footer';
 import Content from './components/content';
 import Read from './components/read';

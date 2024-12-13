@@ -5,10 +5,13 @@ import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import { FaEdit, FaPaw, FaBirthdayCake } from 'react-icons/fa'; // Import specific icons
 
+
+// petitem component displays individual pet details with options to edit or delete
 function PetItem(props) {
   useEffect(() => {
     console.log("Pet Item:", props.mypet);
   }, [props.mypet]); // Only run this effect when the mypet prop changes
+
 
   // Delete function to handle removing a pet
   const handleDelete = (e) => {
@@ -22,6 +25,7 @@ function PetItem(props) {
       });
   };
 
+  //return back data in a card format
   return (
     <div>
       <Card>
